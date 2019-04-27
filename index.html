@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
+    <title>Chinese Rcognition</title>
+
+    <!-- TensorFlow.js script -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>
+
+    <!-- bs4 css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
+
+    <!-- css pie -->
+    <link rel="stylesheet" href="pie.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+    <!-- canvas script -->
+    <script src="fabric.js"></script>
+
+    <!-- main script -->
+    <script src="model.js"> </script>
+
+    <!-- main css -->
+    <link rel="stylesheet" href="main.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        <a class="navbar-brand" href="#">
+            <h1>中文手写识别</h1>
+        </a>
+    </nav>
+
+    <div class="container-fluid">
+        <blockquote class="blockquote text-justify" style="margin:50px;">
+            <p>本平台是一个使用卷积神经网络(CNN)来进行手写汉字识别的简单工具。 
+                CNN经过训练，通过在下方白板中的书写，可以识别出大部分的汉字，
+                由于汉字库较大，目前实现了140个常用汉字的识别。
+                右侧表将显示出概率为前5的预测。
+            </p>
+            <footer class="blockquote-footer">EVEN PANG</footer>
+        </blockquote>
+    </div>
+
+    <div class="row">
+        <div class="col" style='margin-left:100px;'>
+            <h4 id='status'>正在加载模型... </h4>
+            <canvas id="canvas" width="300" height="300" class="canvas"
+                style="border:1px solid #b9bfc9;margin-top:25px;"></canvas>
+            <div class="btn-group" style='margin-top:40px; '>
+                <input type="range" min="5" max="20" value="10" class="slider" id="myRange" style='margin-top:20px;'>
+                <button type="button" class="btn btn-outline-primary" onclick='erase()' style='margin-left:10px;'
+                    disabled>Clear</button>
+            </div>
+        </div>
+
+        <div class="col">
+                <section style="margin-top:120px">
+                    <div class="pieID pie">
+    
+                    </div>
+                    <ul class="pieID legend">
+                        <li>
+                            <em id="sym1"></em>
+                            <span id="prob1"></span>
+                        </li>
+                        <li>
+                            <em id="sym2"></em>
+                            <span id="prob2"></span>
+                        </li>
+                        <li>
+                            <em id="sym3"></em>
+                            <span id="prob3"></span>
+                        </li>
+                        <li>
+                            <em id="sym4"></em>
+                            <span id="prob4"></span>
+                        </li>
+                        <li>
+                            <em id="sym5"></em>
+                            <span id="prob5"></span>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+    </div>
+</body>
+
+<script src="pie.js"></script>
+<script>
+    console.log('starting');
+    start()
+</script>
+
+</html>
